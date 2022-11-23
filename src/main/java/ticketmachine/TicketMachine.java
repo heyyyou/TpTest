@@ -1,8 +1,10 @@
 package ticketmachine;
 
 /**
- * TicketMachine models a naive ticket machine that issues flat-fare tickets. The price of a ticket is specified via the
- * constructor. It is a naive machine in the sense that it trusts its users to insert enough money before trying to print a
+ * TicketMachine models a naive ticket machine that issues flat-fare tickets.
+ * The price of a ticket is specified via the
+ * constructor. It is a naive machine in the sense that it trusts its users to
+ * insert enough money before trying to print a
  * ticket. It also assumes that users enter sensible amounts.
  *
  * @author David J. Barnes and Michael Kolling
@@ -77,18 +79,24 @@ public class TicketMachine {
 	}
 
 	/**
-	 * Print a ticket. Update the total collected and reduce the balance 
+	 * Print a ticket. Update the total collected and reduce the balance
 	 *
 	 * @return vrai si le ticket a été imprimé, faux sinon
 	 */
 	public boolean printTicket() {
-		// Simulate the printing of a ticket.
-		System.out.println("##################");
-		System.out.println("# The BlueJ Line");
-		System.out.println("# Ticket");
-		System.out.println("# " + price + " cents.");
-		System.out.println("##################");
-		System.out.println();
-		return true;
+		if (getPrice() <= getBalance()) {
+			// Simulate the printing of a ticket.
+			System.out.println("##################");
+			System.out.println("# The BlueJ Line");
+			System.out.println("# Ticket");
+			System.out.println("# " + price + " cents.");
+			System.out.println("##################");
+			System.out.println();
+			balance = balance - price;
+			return true;
+		} else
+			return false;
+
 	}
+
 }

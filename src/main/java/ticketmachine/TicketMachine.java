@@ -75,7 +75,10 @@ public class TicketMachine {
 	 */
 	public int refund() {
 		System.out.println("Je vous rends : " + balance + " centimes");
-		return balance;
+		int balanceT= balance;
+		balance=0;
+		total=0;
+		return balanceT;
 	}
 
 	/**
@@ -84,6 +87,11 @@ public class TicketMachine {
 	 * @return vrai si le ticket a été imprimé, faux sinon
 	 */
 	public boolean printTicket() {
+		if(balance<price){
+			return false;
+		}
+		balance -=price;
+		total -= balance;
 		if (getPrice() <= getBalance()) {
 			// Simulate the printing of a ticket.
 			System.out.println("##################");
